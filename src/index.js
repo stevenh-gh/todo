@@ -1,3 +1,4 @@
 import "./style.css";
+import pageLoad from "./views/pageLoad";
 
-console.log("hello world");
+pageLoad();
