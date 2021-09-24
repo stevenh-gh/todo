@@ -1,4 +1,4 @@
-function createElement(element, className = "", id = "") {
+export function createElement(element, className = "", id = "") {
     const ele = document.createElement(element);
     ele.className = className;
     ele.id = id;
@@ -14,7 +14,7 @@ export default function pageLoad() {
 		<h1 class="text-center mt-3 text-5xl">Odin List</h1>
 		<div class="flex justify-between mt-3">
 			<h2 class="self-center text-2xl">Projects</h2>
-			<i class="fas fa-plus-circle text-3xl text-blue-500 hover:scale-150 transform"></i>
+			<i class="fas fa-plus-circle text-3xl text-blue-500 hover:scale-150 transform" id="addProjectForm"></i>
 		</div>
 		`;
 
@@ -35,7 +35,7 @@ export default function pageLoad() {
     main.innerHTML = `
 		<div class="flex justify-between mt-3">
 			<h2 class="self-center text-3xl">Project name here</h2>
-			<i class="fas fa-plus-circle text-7xl text-blue-500 hover:scale-150 transform"></i>
+			<i class="fas fa-plus-circle text-7xl text-blue-500 hover:scale-150 transform" id="addTaskForm"></i>
 		</div>
 		`;
 
