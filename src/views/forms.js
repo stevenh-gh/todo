@@ -2,7 +2,7 @@ import { createElement } from "./pageLoad";
 
 export function addProjectForm() {
     const projectForm = createElement("div");
-    projectForm.className = "col-start-4 col-span-6 bg-blue-100 fixed left-64 top-20 mt-2"
+    projectForm.className = "col-start-4 col-span-6 bg-blue-100 fixed left-60 top-20 mt-2 ml-2"
     projectForm.innerHTML = `
 		<form>
     <h1>Add project</h1>
