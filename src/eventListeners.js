@@ -15,3 +15,17 @@ export function projectFormCloseEventListener() {
         btn.parentElement.classList.add("hidden");
     });
 }
+
+export function projectFormAddProjectEventListener() {
+    const btn = document.getElementById("project-form-add");
+    btn.addEventListener("click", e => {
+        const form = document.getElementById("project-form");
+        const fd = new FormData(form);
+        const projectName = fd.get("project-name");
+        if (projectName) {
+            e.preventDefault();
+            console.log(projectName);
+            form.reset();
+        }
+    })
+}
