@@ -10,7 +10,7 @@ export function addProjectForm() {
     <label for="project-name">Project name: </label><br>
     <input type="text" placeholder="Enter project name" name="project-name" required><br>
 		
-    <button type="submit" class="bg-green-400 text-center w-full text-white font-bold">Add</button><br>
+    <button type="submit" class="bg-green-400 text-center w-full text-white font-bold" id="project-form-add">Add</button><br>
     <button type="button" class="bg-red-500 text-center w-full text-white font-bold" id="project-form-close">Close</button>
 		</form>
 		`;
