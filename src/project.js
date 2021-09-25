@@ -5,5 +5,17 @@ export default class Project {
     }
 }
 
-// export const projects = [new Project("default project")];
-export const projects = new Map();
+
+class Projects {
+    constructor() {
+        this.list = new Map();
+    }
+    add(projectName) {
+        this.list.set(projectName, new Project(projectName));
+    }
+    last() {
+        return Array.from(this.list)[this.list.size - 1][1];
+    }
+}
+
+export const projects = new Projects();
