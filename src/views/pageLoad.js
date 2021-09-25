@@ -18,7 +18,7 @@ export default function pageLoad() {
 		</div>
 		`;
 
-    const projectList = createElement("ul", "list-inside list-square mt-2 space-y-1", "projectList");
+    const projectList = createElement("ul", "list-inside list-square mt-2 space-y-1", "project-list");
     projectList.innerHTML = `
 		<li class="">Default project</li>
 		<li class="">project...</li>
