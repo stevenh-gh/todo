@@ -1,4 +1,5 @@
 import Project, { projects } from "./project";
+import { appendProjectToList } from "./views/projectList";
 
 export function projectFormOpenEventListener() {
     const btn = document.getElementById("open-project-form");
@@ -26,8 +27,10 @@ export function projectFormAddProjectEventListener() {
         const projectName = fd.get("project-name");
         if (projectName) {
             e.preventDefault();
-            projects.set(projectName, new Project(projectName));
-            // projects.forEach((project) => console.log(project.title));
+            // projects.set(projectName, new Project(projectName));
+            projects.add(projectName);
+            // projects.list.forEach(project => console.log(project.title));
+            appendProjectToList(projects.last());
             form.reset();
         }
     })
