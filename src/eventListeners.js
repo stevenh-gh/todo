@@ -1,3 +1,5 @@
+import Project, { projects } from "./project";
+
 export function projectFormOpenEventListener() {
     const btn = document.getElementById("open-project-form");
     btn.addEventListener("click", () => {
@@ -24,7 +26,8 @@ export function projectFormAddProjectEventListener() {
         const projectName = fd.get("project-name");
         if (projectName) {
             e.preventDefault();
-            console.log(projectName);
+            projects.set(projectName, new Project(projectName));
+            // projects.forEach((project) => console.log(project.title));
             form.reset();
         }
     })
