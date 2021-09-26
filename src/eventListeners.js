@@ -27,8 +27,9 @@ export function projectFormAddProjectEventListener() {
         const projectName = fd.get("project-name");
         if (projectName) {
             e.preventDefault();
+            projects.add(new Project(projectName));
             // projects.set(projectName, new Project(projectName));
-            projects.add(projectName);
+            // projects.add(projectName);
             // projects.list.forEach(project => console.log(project.title));
             appendProjectToList(projects.last());
             form.reset();
