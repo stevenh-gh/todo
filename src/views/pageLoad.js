@@ -1,8 +1,29 @@
+import Project, { projects } from "../project";
+import { appendProjectToList } from "./projectList";
+
 export function createElement(element, className = "", id = "") {
     const ele = document.createElement(element);
     ele.className = className;
     ele.id = id;
     return ele;
+}
+
+function loadLocalStorage() {
+    for (var i in localStorage) {
+        if (i == "length") {
+            break;
+        }
+        const proj = Project.deserialize(localStorage[i]);
+        if (typeof proj.title != "object") {
+            projects.add(proj);
+        }
+    }
+}
+
+function loadProjectsIntoList() {
+    projects.list.forEach(item => {
+        appendProjectToList(item)
+    });
 }
 
 export default function pageLoad() {
@@ -68,4 +89,8 @@ export default function pageLoad() {
 
     main.appendChild(taskSpace);
     content.appendChild(main);
+
+
+    loadLocalStorage();
+    loadProjectsIntoList();
 }
