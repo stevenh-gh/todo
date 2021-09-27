@@ -33,3 +33,16 @@ export function projectFormAddProjectEventListener() {
         }
     })
 }
+
+function removeAllChildren(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+export function toggleProjectPage(project) {
+    const projectName = document.getElementById("project-name");
+    const taskSpace = document.getElementById("task-space");
+    removeAllChildren(taskSpace);
+    projectName.innerText = project.title;
+}
