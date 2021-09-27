@@ -40,14 +40,14 @@ export default function pageLoad() {
 		`;
 
     const projectList = createElement("ul", "list-inside list-square mt-2 space-y-1", "project-list");
-    projectList.innerHTML = `
-		<li class="">Default project</li>
-		<li class="">project...</li>
-		<li class="">project...</li>
-		<li class="">project...</li>
-		<li class="">project...</li>
-		<li class="">project...</li>
-		`;
+    // projectList.innerHTML = `
+    // <li class="">Default project</li>
+    // <li class="">project...</li>
+    // <li class="">project...</li>
+    // <li class="">project...</li>
+    // <li class="">project...</li>
+    // <li class="">project...</li>
+    // `;
 
     nav.appendChild(projectList);
     content.appendChild(nav);
@@ -55,12 +55,12 @@ export default function pageLoad() {
     const main = createElement("main", "col-span-10 shadow-xl px-4");
     main.innerHTML = `
 		<div class="flex justify-between mt-3">
-			<h2 class="self-center text-3xl">Project name here</h2>
+			<h2 class="self-center text-3xl" id="project-name">Project name here</h2>
 			<i class="fas fa-plus-circle text-7xl text-blue-500 hover:scale-150 transform" id="addTaskForm"></i>
 		</div>
 		`;
 
-    const taskSpace = createElement("div", "grid grid-cols-12 gap-2 space-y-3 mt-8", "taskSpace");
+    const taskSpace = createElement("div", "grid grid-cols-12 gap-2 space-y-3 mt-8", "task-space");
     taskSpace.innerHTML = `
 		<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
 			<label for="" class="flex justify-between">
