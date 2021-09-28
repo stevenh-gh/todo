@@ -1,4 +1,5 @@
 import { toggleProjectPage } from "../eventListeners";
+import { projects } from "../project";
 import { createElement } from "./pageLoad";
 
 export function appendProjectToList(project) {
@@ -19,4 +20,9 @@ export function appendProjectToList(project) {
         toggleProjectPage(project);
     })
     ul.appendChild(projectEle);
+
+    deleteBtn.addEventListener("click", () => {
+        projects.delete(project);
+        ul.removeChild(projectEle);
+    });
 }
