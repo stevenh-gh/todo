@@ -25,7 +25,9 @@ export function projectFormAddProjectEventListener() {
         const form = document.getElementById("project-form");
         const fd = new FormData(form);
         const projectName = fd.get("project-name");
-        if (projectName) {
+        if (projects.list.has(projectName)) {
+            btn.setCustomValidity("Project name is already in use.")
+        } else if (projectName) {
             e.preventDefault();
             projects.add(new Project(projectName));
             appendProjectToList(projects.last());
