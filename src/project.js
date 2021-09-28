@@ -23,6 +23,10 @@ class Projects {
         this.list.set(project.title, project);
         localStorage.setItem(project.title, project.serialize());
     }
+    delete(project) {
+        this.list.delete(project.title);
+        localStorage.removeItem(project.title);
+    }
     last() {
         return Array.from(this.list)[this.list.size - 1][1];
     }
