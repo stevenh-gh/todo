@@ -36,6 +36,16 @@ export function projectFormAddProjectEventListener() {
     })
 }
 
+export function taskFormOpenEventListener() {
+    const btn = document.getElementById("add-task-form");
+    btn.addEventListener("click", () => {
+        console.log("hi");
+        const form = document.getElementById("task-form");
+        form.classList.remove("hidden");
+        form.classList.add("block");
+    });
+}
+
 function removeAllChildren(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
