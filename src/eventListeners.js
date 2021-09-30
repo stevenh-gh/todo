@@ -46,6 +46,15 @@ export function taskFormOpenEventListener() {
     });
 }
 
+export function taskFormCloseEventListener() {
+    const btn = document.getElementById("task-btn-close");
+    btn.addEventListener("click", () => {
+        const form = document.getElementById("task-form");
+        form.classList.remove("block");
+        form.classList.add("hidden");
+    });
+}
+
 function removeAllChildren(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
