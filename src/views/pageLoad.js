@@ -56,7 +56,7 @@ export default function pageLoad() {
     main.innerHTML = `
 		<div class="flex justify-between mt-3">
 			<h2 class="self-center text-3xl" id="project-name">Project name here</h2>
-			<i class="fas fa-plus-circle text-7xl text-blue-500 hover:scale-150 transform" id="addTaskForm"></i>
+			<i class="fas fa-plus-circle text-7xl text-blue-500 hover:scale-150 transform" id="add-task-form"></i>
 		</div>
 		`;
 
