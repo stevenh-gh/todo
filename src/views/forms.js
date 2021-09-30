@@ -22,7 +22,7 @@ export function addTaskForm() {
     const taskForm = createElement("div", "", "task-form");
     taskForm.className = "bg-blue-100 col-start-4 col-span-6 absolute right-20 top-12 p-5 hidden";
     taskForm.innerHTML = `
-    <form>
+    <form class="space-y-3">
       <h1 class=" text-center">Add task</h1>
       
       <label for="task-name">Name: </label><br>
@@ -30,6 +30,9 @@ export function addTaskForm() {
       
       <label for="task-desc">Description: </label><br>
       <textarea name="task-desc" placeholder="Optional: enter description"></textarea><br>
+
+      <label for="task-due">Due: </label>
+      <input type="date"><br>
       
       <label for="task-priority">Priority: </label>
       <select name="task-priority">
@@ -37,6 +40,9 @@ export function addTaskForm() {
         <option value="medium">Medium</option>
         <option value="high">High</option>
       </select>
+
+      <button type="submit" class="bg-green-400 text-center w-full text-white font-bold">Add</button><br>
+      <button type="button" class="bg-red-500 text-center w-full text-white font-bold" id="task-btn-close">Close</button>
       
     </form>
     
