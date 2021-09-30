@@ -9,15 +9,19 @@ export function createElement(element, className = "", id = "") {
 }
 
 function loadLocalStorage() {
+    const temp_arr = [];
     for (var i in localStorage) {
         if (i == "length") {
             break;
         }
         const proj = Project.deserialize(localStorage[i]);
         if (typeof proj.title != "object") {
-            projects.add(proj);
+            // projects.add(proj);
+            temp_arr.push(proj);
         }
     }
+    temp_arr.sort((a, b) => a.date - b.date);
+    temp_arr.forEach(proj => projects.add(proj));
 }
 
 function loadProjectsIntoList() {
