@@ -19,17 +19,17 @@ export function addProjectForm() {
 }
 
 export function addTaskForm() {
-    const taskForm = createElement("div");
-    taskForm.className = "bg-blue-100 col-start-4 col-span-6";
+    const taskForm = createElement("div", "", "task-form");
+    taskForm.className = "bg-blue-100 col-start-4 col-span-6 absolute right-20 top-12 p-5 hidden";
     taskForm.innerHTML = `
     <form>
-      <h1>Add task</h1>
+      <h1 class=" text-center">Add task</h1>
       
       <label for="task-name">Name: </label><br>
       <input type="text" name="task-name" placeholder="Enter task title" required><br>
       
       <label for="task-desc">Description: </label><br>
-      <textarea name="task-desc" placeholder="Optional: enter description"></textarea>
+      <textarea name="task-desc" placeholder="Optional: enter description"></textarea><br>
       
       <label for="task-priority">Priority: </label>
       <select name="task-priority">
