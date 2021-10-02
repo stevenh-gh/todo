@@ -3,9 +3,9 @@ import { createElement } from "./pageLoad";
 export default function loadTasks(project) {
     const taskSpace = document.getElementById("task-space");
     project.tasks.forEach(task => {
-        const taskDiv = createElement("div", "col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg", task.title);
+        const taskDiv = createElement("div", "col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg transform hover:scale-105 group", task.title);
         taskDiv.innerHTML = `
-        			<label for="" class="flex justify-between">
+        			<label for="" class="flex justify-between group-hover:cursor-pointer">
                         <input type="checkbox" class="transform scale-150 self-center">
                         <span class="text-3xl">${task.title}</span>
                         <span class="text-3xl">${task.dueDate}</span>
@@ -17,9 +17,9 @@ export default function loadTasks(project) {
 
 export function appendTask(task) {
     const taskSpace = document.getElementById("task-space");
-    const taskDiv = createElement("div", "col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg", task.title);
+    const taskDiv = createElement("div", "col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg transform hover:scale-105 group", task.title);
     taskDiv.innerHTML = `
-        			<label for="" class="flex justify-between">
+        			<label for="" class="flex justify-between group-hover:cursor-pointer">
                         <input type="checkbox" class="transform scale-150 self-center">
                         <span class="text-3xl">${task.title}</span>
                         <span class="text-3xl">${task.dueDate}</span>
