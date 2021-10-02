@@ -29,10 +29,10 @@ export function addTaskForm() {
       <input type="text" name="task-name" placeholder="Enter task title" required><br>
       
       <label for="task-desc">Description: </label><br>
-      <textarea name="task-desc" placeholder="Optional: enter description"></textarea><br>
+      <textarea name="task-desc" placeholder="Enter description" required></textarea><br>
 
       <label for="task-due">Due: </label>
-      <input type="date"><br>
+      <input type="date" name="task-due" required><br>
       
       <label for="task-priority">Priority: </label>
       <select name="task-priority">
@@ -41,7 +41,7 @@ export function addTaskForm() {
         <option value="high">High</option>
       </select>
 
-      <button type="submit" class="bg-green-400 text-center w-full text-white font-bold">Add</button><br>
+      <button type="submit" class="bg-green-400 text-center w-full text-white font-bold" id="task-btn-add">Add</button><br>
       <button type="button" class="bg-red-500 text-center w-full text-white font-bold" id="task-btn-close">Close</button>
       
     </form>
