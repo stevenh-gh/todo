@@ -1,5 +1,6 @@
 import Project, { projects } from "./project";
 import Task from "./task";
+import loadTasks from "./views/loadTasks";
 import { appendProjectToList } from "./views/projectList";
 
 export function projectFormOpenEventListener() {
@@ -91,4 +92,5 @@ export function toggleProjectPage(project) {
     const taskSpace = document.getElementById("task-space");
     removeAllChildren(taskSpace);
     projectName.innerText = project.title;
+    loadTasks(project);
 }
