@@ -71,7 +71,8 @@ export function taskFormAddTaskEventListener() {
             const taskPriority = fd.get("task-priority");
 
             const task = new Task(taskName, taskDesc, taskDue, taskPriority);
-            currentProject.tasks.push(task);
+            currentProject.addTask(task);
+            // console.log(currentProject);
             form.reset();
         } else {
             btn.setCustomValidity("Project does not exist");
