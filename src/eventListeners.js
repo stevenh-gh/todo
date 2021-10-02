@@ -62,8 +62,9 @@ export function taskFormAddTaskEventListener() {
         if (projects.list.has(currentProjectPage.innerText)) {
             e.preventDefault();
             const currentProject = projects.list.get(currentProjectPage.innerText);
+            const form = document.getElementById("task-form").children[0];
 
-            const fd = new FormData(document.getElementById("task-form").children[0]);
+            const fd = new FormData(form);
             const taskName = fd.get("task-name");
             const taskDesc = fd.get("task-desc");
             const taskDue = fd.get("task-due");
@@ -71,6 +72,7 @@ export function taskFormAddTaskEventListener() {
 
             const task = new Task(taskName, taskDesc, taskDue, taskPriority);
             currentProject.tasks.push(task);
+            form.reset();
         } else {
             btn.setCustomValidity("Project does not exist");
         }
