@@ -1,6 +1,6 @@
 import Project, { projects } from "./project";
 import Task from "./task";
-import loadTasks from "./views/loadTasks";
+import loadTasks, { appendTask } from "./views/loadTasks";
 import { appendProjectToList } from "./views/projectList";
 
 export function projectFormOpenEventListener() {
@@ -61,7 +61,6 @@ export function taskFormAddTaskEventListener() {
     btn.addEventListener("click", e => {
         const currentProjectPage = document.getElementById("project-name");
         if (projects.list.has(currentProjectPage.innerText)) {
-            e.preventDefault();
             const currentProject = projects.list.get(currentProjectPage.innerText);
             const form = document.getElementById("task-form").children[0];
 
@@ -71,10 +70,14 @@ export function taskFormAddTaskEventListener() {
             const taskDue = fd.get("task-due");
             const taskPriority = fd.get("task-priority");
 
-            const task = new Task(taskName, taskDesc, taskDue, taskPriority);
-            currentProject.addTask(task);
-            // console.log(currentProject);
-            form.reset();
+            if (taskName && taskDesc && taskDue && taskPriority) {
+                e.preventDefault();
+                const task = new Task(taskName, taskDesc, taskDue, taskPriority);
+                currentProject.addTask(task);
+                // console.log(currentProject);
+                appendTask(task);
+                form.reset();
+            }
         } else {
             btn.setCustomValidity("Project does not exist");
         }
