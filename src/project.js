@@ -1,15 +1,25 @@
+import Task from "./task";
+
 export default class Project {
     static deserialize(serialize) {
         const obj = JSON.parse(serialize);
         const proj = new Project(obj.title);
-        proj.tasks = obj.tasks;
+        obj.tasks.forEach(task => {
+            proj.tasks.push(task);
+        });
         proj.date = new Date(obj.date);
+        // console.log(proj);
         return proj;
     }
     constructor(title) {
         this.title = title;
         this.tasks = [];
         this.date = new Date();
+    }
+    addTask(task) {
+        this.tasks.push(task);
+        localStorage.removeItem(this.title);
+        localStorage.setItem(this.title, this.serialize());
     }
     serialize() {
         return JSON.stringify(this);
