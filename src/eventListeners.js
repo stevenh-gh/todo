@@ -1,4 +1,5 @@
 import Project, { projects } from "./project";
+import Task from "./task";
 import { appendProjectToList } from "./views/projectList";
 
 export function projectFormOpenEventListener() {
@@ -39,7 +40,6 @@ export function projectFormAddProjectEventListener() {
 export function taskFormOpenEventListener() {
     const btn = document.getElementById("add-task-form");
     btn.addEventListener("click", () => {
-        console.log("hi");
         const form = document.getElementById("task-form");
         form.classList.remove("hidden");
         form.classList.add("block");
@@ -52,6 +52,28 @@ export function taskFormCloseEventListener() {
         const form = document.getElementById("task-form");
         form.classList.remove("block");
         form.classList.add("hidden");
+    });
+}
+
+export function taskFormAddTaskEventListener() {
+    const btn = document.getElementById("task-btn-add");
+    btn.addEventListener("click", e => {
+        const currentProjectPage = document.getElementById("project-name");
+        if (projects.list.has(currentProjectPage.innerText)) {
+            e.preventDefault();
+            const currentProject = projects.list.get(currentProjectPage.innerText);
+
+            const fd = new FormData(document.getElementById("task-form").children[0]);
+            const taskName = fd.get("task-name");
+            const taskDesc = fd.get("task-desc");
+            const taskDue = fd.get("task-due");
+            const taskPriority = fd.get("task-priority");
+
+            const task = new Task(taskName, taskDesc, taskDue, taskPriority);
+            currentProject.tasks.push(task);
+        } else {
+            btn.setCustomValidity("Project does not exist");
+        }
     });
 }
 
