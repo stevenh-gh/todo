@@ -21,6 +21,11 @@ export default class Project {
         localStorage.removeItem(this.title);
         localStorage.setItem(this.title, this.serialize());
     }
+    deleteTask(task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1);
+        localStorage.removeItem(this.title);
+        localStorage.setItem(this.title, this.serialize());
+    }
     serialize() {
         return JSON.stringify(this);
     }
