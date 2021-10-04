@@ -84,7 +84,7 @@ export function taskFormAddTaskEventListener() {
     });
 }
 
-function removeAllChildren(parent) {
+export function removeAllChildren(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
