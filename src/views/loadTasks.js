@@ -1,3 +1,5 @@
+import { removeAllChildren } from "../eventListeners";
+import { projects } from "../project";
 import { createElement } from "./pageLoad";
 
 export default function loadTasks(project) {
@@ -11,6 +13,14 @@ export default function loadTasks(project) {
                         <span class="text-3xl">${task.dueDate}</span>
                     </label>
                     `;
+        const deleteBtn = createElement("i", "fa fa-minus-circle text-red-500 hidden group-hover:block group-hover:cursor-pointer");
+        deleteBtn.addEventListener("click", () => {
+            project.deleteTask(task);
+            removeAllChildren(taskSpace);
+            loadTasks(project);
+        });
+
+        taskDiv.appendChild(deleteBtn);
         taskSpace.appendChild(taskDiv);
     });
 }
@@ -25,5 +35,14 @@ export function appendTask(task) {
                         <span class="text-3xl">${task.dueDate}</span>
                     </label>
                     `;
+    const deleteBtn = createElement("i", "fa fa-minus-circle text-red-500 hidden group-hover:block group-hover:cursor-pointer");
+    const project = projects.list.get(taskSpace.parentElement.children[0].childNodes[1].textContent);
+    deleteBtn.addEventListener("click", () => {
+        project.deleteTask(task);
+        removeAllChildren(taskSpace);
+        loadTasks(project);
+    });
+
+    taskDiv.appendChild(deleteBtn);
     taskSpace.appendChild(taskDiv);
 }
