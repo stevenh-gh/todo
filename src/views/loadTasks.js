@@ -1,5 +1,6 @@
 import { removeAllChildren } from "../eventListeners";
 import { projects } from "../project";
+import { editTaskForm } from "./forms";
 import { createElement } from "./pageLoad";
 
 export default function loadTasks(project) {
@@ -21,6 +22,10 @@ export default function loadTasks(project) {
         });
 
         taskDiv.appendChild(deleteBtn);
+        taskDiv.addEventListener("click", () => {
+            editTaskForm(task);
+        });
+
         taskSpace.appendChild(taskDiv);
     });
 }
@@ -44,5 +49,9 @@ export function appendTask(task) {
     });
 
     taskDiv.appendChild(deleteBtn);
+    taskDiv.addEventListener("click", () => {
+        editTaskForm(task);
+    });
+
     taskSpace.appendChild(taskDiv);
 }
