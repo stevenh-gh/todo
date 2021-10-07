@@ -51,6 +51,12 @@ export function addTaskForm() {
 }
 
 export function editTaskForm(task) {
+    const collection = document.querySelectorAll(".edit-task-form");
+    collection.forEach(f => {
+        f.classList.remove("block");
+        f.classList.add("hidden");
+    });
+
     const taskForm = createElement("div");
     taskForm.className = "bg-blue-100 col-start-4 col-span-6 absolute right-20 top-12 p-5 block edit-task-form";
 
