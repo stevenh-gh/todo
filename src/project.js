@@ -26,6 +26,12 @@ export default class Project {
         localStorage.removeItem(this.title);
         localStorage.setItem(this.title, this.serialize());
     }
+    replaceTask(task, newtask) {
+        const index = this.tasks.indexOf(task);
+        this.tasks[index] = newtask;
+        localStorage.removeItem(this.title);
+        localStorage.setItem(this.title, this.serialize());
+    }
     serialize() {
         return JSON.stringify(this);
     }
