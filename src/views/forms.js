@@ -134,6 +134,12 @@ export function editTaskForm(task) {
     closeBtn.setAttribute("type", "button");
     submitBtn.innerText = "Submit edit";
     closeBtn.innerText = "Close";
+
+    closeBtn.addEventListener("click", () => {
+        taskForm.classList.remove("block");
+        taskForm.classList.add("hidden");
+    });
+
     form.appendChild(submitBtn);
     form.appendChild(closeBtn);
 
