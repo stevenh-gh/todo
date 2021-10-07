@@ -51,8 +51,8 @@ export function addTaskForm() {
 }
 
 export function editTaskForm(task) {
-    const taskForm = createElement("div", "", "edit-task-form");
-    taskForm.className = "bg-blue-100 col-start-4 col-span-6 absolute right-20 top-12 p-5 block";
+    const taskForm = createElement("div");
+    taskForm.className = "bg-blue-100 col-start-4 col-span-6 absolute right-20 top-12 p-5 block edit-task-form";
 
     const form = createElement("form", "space-y-3");
 
@@ -118,10 +118,13 @@ export function editTaskForm(task) {
     switch (task.priority) {
         case "low":
             optionLow.setAttribute("selected", "");
+            break;
         case "medium":
             optionMed.setAttribute("selected", "");
+            break;
         case "high":
             optionHigh.setAttribute("selected", "");
+            break;
     }
     inputPriority.appendChild(optionLow);
     inputPriority.appendChild(optionMed);
