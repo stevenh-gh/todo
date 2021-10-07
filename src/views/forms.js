@@ -77,6 +77,7 @@ export function editTaskForm(task) {
     inputName.setAttribute("type", "text");
     inputName.setAttribute("placeholder", "Enter task title");
     inputName.setAttribute("required", "");
+    inputName.setAttribute("name", "task-name");
     form.appendChild(inputName);
 
     form.appendChild(createElement("br"));
@@ -89,6 +90,7 @@ export function editTaskForm(task) {
 
     const inputDesc = createElement("textarea", "", "task-desc");
     inputDesc.setAttribute("placeholder", "Enter description");
+    inputDesc.setAttribute("name", "task-desc");
     inputDesc.innerText = task.description;
     form.appendChild(inputDesc);
     form.appendChild(createElement("br"));
@@ -102,6 +104,7 @@ export function editTaskForm(task) {
     inputDue.setAttribute("value", task.dueDate);
     inputDue.setAttribute("type", "date");
     inputDue.setAttribute("rqeuired", "");
+    inputDue.setAttribute("name", "task-due");
     form.appendChild(inputDue);
     form.appendChild(createElement("br"));
 
@@ -111,6 +114,7 @@ export function editTaskForm(task) {
     form.appendChild(labelPriority);
 
     const inputPriority = createElement("select", "", "task-priority");
+    inputPriority.setAttribute("name", "task-priority");
     const optionLow = createElement("option");
     const optionMed = createElement("option");
     const optionHigh = createElement("option");
@@ -155,4 +159,12 @@ export function editTaskForm(task) {
     taskForm.appendChild(form);
     const content = document.getElementById("content");
     content.appendChild(taskForm);
+
+    submitBtn.addEventListener("click", () => {
+        const fd = new FormData(form);
+        const name = fd.get("task-name");
+        const desc = fd.get("task-desc");
+        const date = fd.get("task-due");
+        const priority = fd.get("task-priority");
+    });
 }
