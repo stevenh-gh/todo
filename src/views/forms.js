@@ -1,3 +1,6 @@
+import { removeAllChildren } from "../eventListeners";
+import Task from "../task";
+import loadTasks from "./loadTasks";
 import { createElement } from "./pageLoad";
 export function addProjectForm() {
     const projectForm = createElement("div");
@@ -50,7 +53,7 @@ export function addTaskForm() {
     content.appendChild(taskForm);
 }
 
-export function editTaskForm(task) {
+export function editTaskForm(task, project) {
     const collection = document.querySelectorAll(".edit-task-form");
     collection.forEach(f => {
         f.classList.remove("block");
@@ -160,11 +163,20 @@ export function editTaskForm(task) {
     const content = document.getElementById("content");
     content.appendChild(taskForm);
 
-    submitBtn.addEventListener("click", () => {
+    submitBtn.addEventListener("click", e => {
         const fd = new FormData(form);
         const name = fd.get("task-name");
         const desc = fd.get("task-desc");
         const date = fd.get("task-due");
         const priority = fd.get("task-priority");
+        if (name && desc && date && priority) {
+            e.preventDefault();
+            const newTask = new Task(name, desc, date, priority);
+            project.replaceTask(task, newTask);
+            removeAllChildren(document.getElementById("task-space"));
+            loadTasks(project);
+        } else {
+            submitBtn.setCustomValidity("All fields are required.");
+        }
     });
 }
