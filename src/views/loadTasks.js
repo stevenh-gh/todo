@@ -23,7 +23,7 @@ export default function loadTasks(project) {
 
         taskDiv.appendChild(deleteBtn);
         taskDiv.addEventListener("click", () => {
-            editTaskForm(task);
+            editTaskForm(task, project);
         });
 
         taskSpace.appendChild(taskDiv);
@@ -50,7 +50,7 @@ export function appendTask(task) {
 
     taskDiv.appendChild(deleteBtn);
     taskDiv.addEventListener("click", () => {
-        editTaskForm(task);
+        editTaskForm(task, project);
     });
 
     taskSpace.appendChild(taskDiv);
