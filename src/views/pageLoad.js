@@ -1,4 +1,7 @@
+import { toggleProjectPage } from "../eventListeners";
 import Project, { projects } from "../project";
+import Task from "../task";
+import loadTasks from "./loadTasks";
 import { appendProjectToList } from "./projectList";
 
 export function createElement(element, className = "", id = "") {
@@ -65,36 +68,49 @@ export default function pageLoad() {
 		`;
 
     const taskSpace = createElement("div", "grid grid-cols-12 gap-2 space-y-3 mt-8", "task-space");
-    taskSpace.innerHTML = `
-		<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
-			<label for="" class="flex justify-between">
-				<input type="checkbox" class="transform scale-150 self-center">
-				<span class="text-3xl">task name</span>
-				<span class="text-3xl">due date</span>
-			</label>
-		</div>
-		
-		<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
-			<label for="" class="flex justify-between">
-				<input type="checkbox" class="transform scale-150 self-center">
-				<span class="text-3xl">task name</span>
-				<span class="text-3xl">due date</span>
-			</label>
-		</div>
+    // taskSpace.innerHTML = `
+    // 	<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
+    // 		<label for="" class="flex justify-between">
+    // 			<input type="checkbox" class="transform scale-150 self-center">
+    // 			<span class="text-3xl">task name</span>
+    // 			<span class="text-3xl">due date</span>
+    // 		</label>
+    // 	</div>
 
-		<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
-			<label for="" class="flex justify-between">
-				<input type="checkbox" class="transform scale-150 self-center">
-				<span class="text-3xl">task name</span>
-				<span class="text-3xl">due date</span>
-			</label>
-		</div>
-		`;
+    // 	<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
+    // 		<label for="" class="flex justify-between">
+    // 			<input type="checkbox" class="transform scale-150 self-center">
+    // 			<span class="text-3xl">task name</span>
+    // 			<span class="text-3xl">due date</span>
+    // 		</label>
+    // 	</div>
+
+    // 	<div class="col-start-4 col-span-6 rounded-md p-4 border border-gray-300 shadow-lg">
+    // 		<label for="" class="flex justify-between">
+    // 			<input type="checkbox" class="transform scale-150 self-center">
+    // 			<span class="text-3xl">task name</span>
+    // 			<span class="text-3xl">due date</span>
+    // 		</label>
+    // 	</div>
+    // 	`;
 
     main.appendChild(taskSpace);
     content.appendChild(main);
 
 
     loadLocalStorage();
+    defaultProject();
     loadProjectsIntoList();
+}
+
+function defaultProject() {
+    if (!projects.list.entries().next().value) {
+        const proj = new Project("Default project");
+        const task = new Task("Default task", "Example description", "2021-10-09", "low");
+        proj.addTask(task);
+        projects.add(proj);
+        toggleProjectPage(proj);
+    } else {
+        toggleProjectPage(projects.list.entries().next().value[1]);
+    }
 }
