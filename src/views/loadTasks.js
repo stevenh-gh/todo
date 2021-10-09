@@ -18,6 +18,19 @@ export default function loadTasks(project) {
         const label = createElement("div", "flex justify-between group-hover:cursor-pointer");
         const input = createElement("input", "transform scale-150 self-center");
         input.setAttribute("type", "checkbox");
+
+        input.addEventListener("change", () => {
+            if (input.checked) {
+                // console.log("checked");
+                task.complete = true;
+                taskDiv.classList.add("opacity-25");
+            } else {
+                // console.log("unchecked");
+                task.complete = false;
+                taskDiv.classList.remove("opacity-25");
+            }
+        });
+
         const span1 = createElement("span", "text-3xl");
         span1.innerText = task.title;
         const span2 = createElement("span", "text-3xl");
@@ -57,6 +70,21 @@ export function appendTask(task) {
     const label = createElement("div", "flex justify-between group-hover:cursor-pointer");
     const input = createElement("input", "transform scale-150 self-center");
     input.setAttribute("type", "checkbox");
+
+    input.addEventListener("change", () => {
+        if (input.checked) {
+            // console.log("checked");
+            task.complete = true;
+            taskDiv.classList.add("opacity-25");
+        } else {
+            // console.log("unchecked");
+            task.complete = false;
+            taskDiv.classList.remove("opacity-25");
+        }
+    });
+
+
+
     const span1 = createElement("span", "text-3xl");
     span1.innerText = task.title;
     const span2 = createElement("span", "text-3xl");
