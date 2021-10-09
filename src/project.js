@@ -1,5 +1,3 @@
-import Task from "./task";
-
 export default class Project {
     static deserialize(serialize) {
         const obj = JSON.parse(serialize);
@@ -18,17 +16,18 @@ export default class Project {
     }
     addTask(task) {
         this.tasks.push(task);
-        localStorage.removeItem(this.title);
-        localStorage.setItem(this.title, this.serialize());
+        this.reload();
     }
     deleteTask(task) {
         this.tasks.splice(this.tasks.indexOf(task), 1);
-        localStorage.removeItem(this.title);
-        localStorage.setItem(this.title, this.serialize());
+        this.reload();
     }
     replaceTask(task, newtask) {
         const index = this.tasks.indexOf(task);
         this.tasks[index] = newtask;
+        this.reload();
+    }
+    reload() {
         localStorage.removeItem(this.title);
         localStorage.setItem(this.title, this.serialize());
     }
